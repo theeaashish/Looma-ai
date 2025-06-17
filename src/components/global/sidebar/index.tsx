@@ -4,6 +4,9 @@ import { cn } from "@/lib/utils";
 import LogoSmall from "@/svgs/logo-small";
 import React from "react";
 import Items from "./items";
+import { Separator } from "@/components/ui/separator";
+import ClerkAuthState from "../clerk-auth-state";
+import HelpIcon from "@/icons/HelpIcon";
 
 type Props = {
   slug: string;
@@ -23,6 +26,22 @@ const Sidebar = ({ slug }: Props) => {
 
         <div className="flex flex-col py-3">
           <Items page={page} slug={slug}/>
+        </div>
+
+        <div className="px-16">
+          <Separator orientation="horizontal" className="bg-[#333336]"/>
+        </div>
+
+        <div className="px-3 flex flex-col gap-y-5">
+          <div className="flex gap-x-2">
+            <ClerkAuthState />
+            <p className="text-[#9B9CA0]">Profile</p>
+          </div>
+
+          <div className="flex gap-x-3">
+            <HelpIcon />
+            <p className="text-[#9B9CA0]">Help</p>
+          </div>
         </div>
       </div>
     </div>
