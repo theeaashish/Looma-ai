@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { PLANS } from "@/constants/pages";
 import { cn } from "@/lib/utils";
 import { CircleCheck } from "lucide-react";
@@ -16,13 +17,13 @@ const PaymentCard = ({ current, label, landing }: Props) => {
         label !== current
           ? "bg-in-active"
           : "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500",
-        "p-[2px] rounded-xl overflow-hidden"
+        "p-0.5 rounded-xl overflow-hidden"
       )}
     >
       <div
         className={cn(
           landing && "radial--gradient--pink",
-          "flex flex-col rounded-xl pl-5 py-5 pr-10 bg-background-90"
+          "flex flex-col rounded-xl pl-5 py-5 pr-10 h-full bg-background-90"
         )}
       >
         {landing ? (
@@ -45,7 +46,7 @@ const PaymentCard = ({ current, label, landing }: Props) => {
         </p>
 
         {label === "PRO" ? (
-          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r text-xl font-bold from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Smart AI
           </span>
         ) : (
@@ -65,6 +66,34 @@ const PaymentCard = ({ current, label, landing }: Props) => {
             <CircleCheck className="text-indigo-500" /> {i}
           </p>
         ))}
+
+        {landing ? (
+          <Button
+            className={cn(
+              "rounded-full mt-5",
+              label === "PRO"
+                ? "bg-gradient-to-r from-indigo-500 text-white via-purple-500 to-pink-500"
+                : "bg-background-80 text-white hover:text-background-80"
+            )}
+          >
+            {label === current
+              ? "Get Started"
+              : current === "PRO"
+              ? "FREE"
+              : "Get Started"}
+          </Button>
+        ) : (
+          <Button
+            className="rounded-full mt-5 bg-background-80 text-white hover:bg-gray-200 hover:text-zinc-800 transition duration-300"
+            disabled={label === current}
+          >
+            {label === current
+              ? "Active"
+              : current === "PRO"
+              ? "Downgrade"
+              : "Upgrade"}
+          </Button>
+        )}
       </div>
     </div>
   );
