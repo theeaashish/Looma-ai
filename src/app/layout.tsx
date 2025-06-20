@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, Poppins } from "next/font/google";
+import { Playfair_Display, Poppins } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { ThemeProvider } from "@/Providers/theme-provider";
@@ -8,6 +8,13 @@ import { Toaster } from "sonner";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const playfair_display = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["italic", "normal"],
+  variable: "--font-playfair-display",
 });
 
 export const metadata: Metadata = {
@@ -61,8 +68,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={poppins.className} suppressHydrationWarning>
-          <ThemeProvider
+      <body className={`${poppins.className} ${playfair_display.variable}`} suppressHydrationWarning>
+      <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             disableTransitionOnChange

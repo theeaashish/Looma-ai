@@ -2,16 +2,19 @@ import React from "react";
 
 type Props = {
   fillColor: string;
+  width?: number;
 };
 
-const LogoSmall = ({ fillColor }: Props) => {
+const LogoSmall = ({ fillColor, width }: Props) => {
+  const myWidth: number = width || 180;
   return (
     <svg
       viewBox="0 0 513 192"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid meet"
-      className="w-36 h-auto" // adjust size with Tailwind
-      fill={fillColor} // inherits text color
+      className={`h-auto`}
+      style={{ width: `${myWidth}px` }} 
+      fill={fillColor} 
     >
       <g transform="translate(0,192) scale(0.1,-0.1)" stroke="none">
         <path d="M412 1117 l3 -364 28 -40 c15 -22 50 -52 76 -67 l49 -26 251 0 251 0 0 85 0 85 -239 0 c-209 0 -240 2 -245 16 -3 9 -6 164 -6 345 l0 329 -85 0 -86 0 3 -363z" />
