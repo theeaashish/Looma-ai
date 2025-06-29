@@ -14,7 +14,7 @@ const IntegrationCard = ({ title, description, strategy, icon }: Props) => {
       {icon}
       <div className="flex flex-col flex-1">
         <h3 className="text-xl"> {title} </h3>
-        <p className="text-[#9D9D9D] text-sm w-full md:w-10/12 xl:w-8/12 2xl:w-6/12">
+        <p className="text-[#9D9D9D] text-sm w-full md:w-10/12 ">
           {" "}
           {description}{" "}
         </p>
